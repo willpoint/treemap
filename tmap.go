@@ -2,10 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"image"
 	"log"
 	"os"
+	"strconv"
 
 	svg "github.com/ajstarks/svgo"
 )
@@ -54,8 +54,6 @@ const (
 	VERTICAL   = "vertical"
 )
 
-var colors = []string{"red", "blue", "cyan", "magenta", "orange", "lime"}
-
 // TNode is a treemap node
 type TNode struct {
 	Name     string   `json:"name"`
@@ -77,11 +75,20 @@ func (t *TNode) drawNode(
 	color string,
 	depth int,
 ) {
+	// TODO(uz)
+	// add heuristics for color property so each color is distinct
+	// show name of node as text in the center of the drawn rectangle
 	t.depth = depth
 	t.orientation = orientation
 	t.color = color
 	t.bound = bound
-	svg.Rect(bound.Min.X, bound.Min.Y, bound.Dx(), bound.Dy(), fmt.Sprintf("fill:%s;", color))
+	svg.Rect(
+		bound.Min.X,
+		bound.Min.Y,
+		bound.Dx(),
+		bound.Dy(),
+		"fill: "+t.color+";",
+	)
 }
 
 func (t *TNode) size() float64 {
@@ -103,7 +110,7 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 		nextOrientation = VERTICAL
 	}
 	// create rectangular bound for each child
-	for _, c := range t.Children {
+	for i, c := range t.Children {
 		var proportion float64
 		var bound image.Rectangle
 		var color string
@@ -116,6 +123,7 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 			// `proportion` tells the unit of width or height to
 			// consume
 			// bound is (x0, y0)-(x1, y1)
+			//
 			// (x0, y0)				(x1, y0)
 			//    +--------------------+
 			//	  |					   |
@@ -125,8 +133,8 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 			//	  |					   |
 			// 	  +--------------------+
 			//	(x0, y1)			(x1, y1)
+			//
 			// set values for all points in the rect
-			// or set correctly the major points for min/max
 			// x0 -> parentX0
 			// x1 -> parentX1
 			// y0 -> parentY0 + consumed
@@ -140,6 +148,7 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 			max := image.Point{x1, y1}
 			bound = image.Rectangle{min, max}
 		} else {
+			// slicing would be along the y-axis
 			// x0 -> parentX0 + consumed
 			// x1 -> parentX0 + consumed + proportion
 			// y0 -> parentY0
@@ -153,7 +162,11 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 			max := image.Point{x1, y1}
 			bound = image.Rectangle{min, max}
 		}
-		color = colors[int(consumed)%len(colors)]
+		color = newRgb(
+			int(consumed+proportion)>>uint(i),
+			int(proportion)>>uint(i),
+			int(mSize+consumed),
+		).String()
 		c.drawNode(
 			svg,
 			bound,
@@ -181,6 +194,26 @@ func each(nn []*TNode, before, after func(t *TNode)) {
 			after(c)
 		}
 	}
+}
+
+type rgb struct {
+	r, g, b uint8
+}
+
+func newRgb(r, g, b int) rgb {
+	return rgb{
+		r: uint8(r & 0xff),
+		g: uint8(g & 0xff),
+		b: uint8(b & 0xff),
+	}
+}
+
+func itoa(n uint8) string {
+	return strconv.Itoa(int(n))
+}
+
+func (c rgb) String() string {
+	return "rgb(" + itoa(c.r) + "," + itoa(c.g) + "," + itoa(c.b) + ")"
 }
 
 func main() {
@@ -220,6 +253,7 @@ func main() {
 	tmap.orientation = HORIZONTAL
 	tmap.drawTree(svg)
 	svg.End()
+
 }
 
 /*
