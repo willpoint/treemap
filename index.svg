@@ -3,14 +3,506 @@
 <svg width="800" height="600"
      xmlns="http://www.w3.org/2000/svg"
      xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect x="0" y="0" width="800" height="323" style="fill: rgb(66,66,122);" />
-<rect x="0" y="323" width="800" height="107" style="fill: rgb(214,53,188);" />
-<rect x="0" y="430" width="800" height="170" style="fill: rgb(150,42,39);" />
-<rect x="0" y="430" width="258" height="170" style="fill: rgb(1,1,166);" />
-<rect x="258" y="430" width="542" height="170" style="fill: rgb(144,15,167);" />
-<rect x="258" y="430" width="542" height="37" style="fill: rgb(37,37,221);" />
-<rect x="258" y="467" width="542" height="81" style="fill: rgb(58,40,2);" />
-<rect x="258" y="548" width="542" height="52" style="fill: rgb(42,13,82);" />
-<rect x="258" y="548" width="388" height="52" style="fill: rgb(131,131,204);" />
-<rect x="646" y="548" width="154" height="52" style="fill: rgb(15,77,79);" />
+<rect x="0" y="0" width="41" height="600" style="fill: rgb(184,112,9);stroke: #fff;" />
+<text x="0" y="0" style="font-size:10px;padding:10px;" >analytics</text>
+<rect x="0" y="0" width="41" height="187" style="fill: rgb(147,38,7);stroke: #fff;" />
+<text x="0" y="0" style="font-size:10px;padding:10px;" >cluster</text>
+<rect x="0" y="0" width="11" height="187" style="fill: rgb(217,179,113);stroke: #fff;" />
+<text x="0" y="0" style="font-size:10px;padding:10px;" >AgglomerativeCluster</text>
+<rect x="11" y="0" width="10" height="187" style="fill: rgb(217,179,113);stroke: #fff;" />
+<text x="11" y="0" style="font-size:10px;padding:10px;" >CommunityStructure</text>
+<rect x="21" y="0" width="18" height="187" style="fill: rgb(217,179,121);stroke: #fff;" />
+<text x="21" y="0" style="font-size:10px;padding:10px;" >HierarchicalCluster</text>
+<rect x="39" y="0" width="2" height="187" style="fill: rgb(217,179,105);stroke: #fff;" />
+<text x="39" y="0" style="font-size:10px;padding:10px;" >MergeEdge</text>
+<rect x="0" y="187" width="41" height="326" style="fill: rgb(147,38,145);stroke: #fff;" />
+<text x="0" y="187" style="font-size:10px;padding:10px;" >graph</text>
+<rect x="0" y="187" width="5" height="326" style="fill: rgb(208,161,72);stroke: #fff;" />
+<text x="0" y="187" style="font-size:10px;padding:10px;" >BetweennessCentrality</text>
+<rect x="5" y="187" width="9" height="326" style="fill: rgb(208,161,75);stroke: #fff;" />
+<text x="5" y="187" style="font-size:10px;padding:10px;" >LinkDistance</text>
+<rect x="14" y="187" width="12" height="326" style="fill: rgb(208,161,79);stroke: #fff;" />
+<text x="14" y="187" style="font-size:10px;padding:10px;" >MaxFlowMinCut</text>
+<rect x="27" y="187" width="9" height="326" style="fill: rgb(208,161,76);stroke: #fff;" />
+<text x="27" y="187" style="font-size:10px;padding:10px;" >ShortestPaths</text>
+<rect x="36" y="187" width="5" height="326" style="fill: rgb(208,161,72);stroke: #fff;" />
+<text x="36" y="187" style="font-size:10px;padding:10px;" >SpanningTree</text>
+<rect x="0" y="513" width="41" height="87" style="fill: rgb(147,38,163);stroke: #fff;" />
+<text x="0" y="513" style="font-size:10px;padding:10px;" >optimization</text>
+<rect x="0" y="513" width="41" height="87" style="fill: rgb(232,209,203);stroke: #fff;" />
+<text x="0" y="513" style="font-size:10px;padding:10px;" >AspectRatioBanker</text>
+<rect x="41" y="0" width="84" height="600" style="fill: rgb(184,112,52);stroke: #fff;" />
+<text x="41" y="0" style="font-size:10px;padding:10px;" >animate</text>
+<rect x="41" y="0" width="84" height="102" style="fill: rgb(174,92,30);stroke: #fff;" />
+<text x="41" y="0" style="font-size:10px;padding:10px;" >Easing</text>
+<rect x="41" y="102" width="84" height="35" style="fill: rgb(174,92,219);stroke: #fff;" />
+<text x="41" y="102" style="font-size:10px;padding:10px;" >FunctionSequence</text>
+<rect x="41" y="137" width="84" height="138" style="fill: rgb(174,92,66);stroke: #fff;" />
+<text x="41" y="137" style="font-size:10px;padding:10px;" >interpolate</text>
+<rect x="41" y="137" width="7" height="138" style="fill: rgb(138,20,48);stroke: #fff;" />
+<text x="41" y="137" style="font-size:10px;padding:10px;" >ArrayInterpolator</text>
+<rect x="48" y="137" width="7" height="138" style="fill: rgb(138,20,48);stroke: #fff;" />
+<text x="48" y="137" style="font-size:10px;padding:10px;" >ColorInterpolator</text>
+<rect x="56" y="137" width="5" height="138" style="fill: rgb(138,20,46);stroke: #fff;" />
+<text x="56" y="137" style="font-size:10px;padding:10px;" >DateInterpolator</text>
+<rect x="61" y="137" width="32" height="138" style="fill: rgb(138,20,72);stroke: #fff;" />
+<text x="61" y="137" style="font-size:10px;padding:10px;" >Interpolator</text>
+<rect x="93" y="137" width="8" height="138" style="fill: rgb(138,20,49);stroke: #fff;" />
+<text x="93" y="137" style="font-size:10px;padding:10px;" >MatrixInterpolator</text>
+<rect x="101" y="137" width="5" height="138" style="fill: rgb(138,20,46);stroke: #fff;" />
+<text x="101" y="137" style="font-size:10px;padding:10px;" >NumberInterpolator</text>
+<rect x="106" y="137" width="6" height="138" style="fill: rgb(138,20,46);stroke: #fff;" />
+<text x="106" y="137" style="font-size:10px;padding:10px;" >ObjectInterpolator</text>
+<rect x="111" y="137" width="6" height="138" style="fill: rgb(138,20,47);stroke: #fff;" />
+<text x="111" y="137" style="font-size:10px;padding:10px;" >PointInterpolator</text>
+<rect x="118" y="137" width="7" height="138" style="fill: rgb(138,20,48);stroke: #fff;" />
+<text x="118" y="137" style="font-size:10px;padding:10px;" >RectangleInterpolator</text>
+<rect x="41" y="276" width="84" height="6" style="fill: rgb(174,92,190);stroke: #fff;" />
+<text x="41" y="276" style="font-size:10px;padding:10px;" >ISchedulable</text>
+<rect x="41" y="282" width="84" height="31" style="fill: rgb(174,92,215);stroke: #fff;" />
+<text x="41" y="282" style="font-size:10px;padding:10px;" >Parallel</text>
+<rect x="41" y="313" width="84" height="3" style="fill: rgb(174,92,186);stroke: #fff;" />
+<text x="41" y="313" style="font-size:10px;padding:10px;" >Pause</text>
+<rect x="41" y="316" width="84" height="34" style="fill: rgb(174,92,217);stroke: #fff;" />
+<text x="41" y="316" style="font-size:10px;padding:10px;" >Scheduler</text>
+<rect x="41" y="349" width="84" height="33" style="fill: rgb(174,92,217);stroke: #fff;" />
+<text x="41" y="349" style="font-size:10px;padding:10px;" >Sequence</text>
+<rect x="41" y="382" width="84" height="55" style="fill: rgb(174,92,239);stroke: #fff;" />
+<text x="41" y="382" style="font-size:10px;padding:10px;" >Transition</text>
+<rect x="41" y="437" width="84" height="120" style="fill: rgb(174,92,47);stroke: #fff;" />
+<text x="41" y="437" style="font-size:10px;padding:10px;" >Transitioner</text>
+<rect x="41" y="557" width="84" height="7" style="fill: rgb(174,92,190);stroke: #fff;" />
+<text x="41" y="557" style="font-size:10px;padding:10px;" >TransitionEvent</text>
+<rect x="41" y="564" width="84" height="36" style="fill: rgb(174,92,220);stroke: #fff;" />
+<text x="41" y="564" style="font-size:10px;padding:10px;" >Tween</text>
+<rect x="124" y="0" width="25" height="600" style="fill: rgb(184,112,250);stroke: #fff;" />
+<text x="124" y="0" style="font-size:10px;padding:10px;" >data</text>
+<rect x="124" y="0" width="25" height="364" style="fill: rgb(147,38,183);stroke: #fff;" />
+<text x="124" y="0" style="font-size:10px;padding:10px;" >converters</text>
+<rect x="124" y="0" width="1" height="364" style="fill: rgb(235,214,173);stroke: #fff;" />
+<text x="124" y="0" style="font-size:10px;padding:10px;" >Converters</text>
+<rect x="125" y="0" width="6" height="364" style="fill: rgb(235,214,178);stroke: #fff;" />
+<text x="125" y="0" style="font-size:10px;padding:10px;" >DelimitedTextConverter</text>
+<rect x="131" y="0" width="13" height="364" style="fill: rgb(235,214,186);stroke: #fff;" />
+<text x="131" y="0" style="font-size:10px;padding:10px;" >GraphMLConverter</text>
+<rect x="144" y="0" width="2" height="364" style="fill: rgb(235,214,174);stroke: #fff;" />
+<text x="144" y="0" style="font-size:10px;padding:10px;" >IDataConverter</text>
+<rect x="146" y="0" width="3" height="364" style="fill: rgb(235,214,176);stroke: #fff;" />
+<text x="146" y="0" style="font-size:10px;padding:10px;" >JSONConverter</text>
+<rect x="124" y="364" width="25" height="35" style="fill: rgb(147,38,110);stroke: #fff;" />
+<text x="124" y="364" style="font-size:10px;padding:10px;" >DataField</text>
+<rect x="124" y="398" width="25" height="43" style="fill: rgb(147,38,118);stroke: #fff;" />
+<text x="124" y="398" style="font-size:10px;padding:10px;" >DataSchema</text>
+<rect x="124" y="441" width="25" height="12" style="fill: rgb(147,38,87);stroke: #fff;" />
+<text x="124" y="441" style="font-size:10px;padding:10px;" >DataSet</text>
+<rect x="124" y="453" width="25" height="66" style="fill: rgb(147,38,141);stroke: #fff;" />
+<text x="124" y="453" style="font-size:10px;padding:10px;" >DataSource</text>
+<rect x="124" y="519" width="25" height="15" style="fill: rgb(147,38,91);stroke: #fff;" />
+<text x="124" y="519" style="font-size:10px;padding:10px;" >DataTable</text>
+<rect x="124" y="534" width="25" height="66" style="fill: rgb(147,38,141);stroke: #fff;" />
+<text x="124" y="534" style="font-size:10px;padding:10px;" >DataUtil</text>
+<rect x="150" y="0" width="20" height="600" style="fill: rgb(184,112,245);stroke: #fff;" />
+<text x="150" y="0" style="font-size:10px;padding:10px;" >display</text>
+<rect x="150" y="0" width="20" height="219" style="fill: rgb(175,95,152);stroke: #fff;" />
+<text x="150" y="0" style="font-size:10px;padding:10px;" >DirtySprite</text>
+<rect x="150" y="219" width="20" height="43" style="fill: rgb(175,95,232);stroke: #fff;" />
+<text x="150" y="219" style="font-size:10px;padding:10px;" >LineSprite</text>
+<rect x="150" y="261" width="20" height="90" style="fill: rgb(175,95,23);stroke: #fff;" />
+<text x="150" y="261" style="font-size:10px;padding:10px;" >RectSprite</text>
+<rect x="150" y="351" width="20" height="249" style="fill: rgb(175,95,183);stroke: #fff;" />
+<text x="150" y="351" style="font-size:10px;padding:10px;" >TextSprite</text>
+<rect x="170" y="0" width="3" height="600" style="fill: rgb(184,112,228);stroke: #fff;" />
+<text x="170" y="0" style="font-size:10px;padding:10px;" >flex</text>
+<rect x="170" y="0" width="3" height="600" style="fill: rgb(5,10,108);stroke: #fff;" />
+<text x="170" y="0" style="font-size:10px;padding:10px;" >FlareVis</text>
+<rect x="174" y="0" width="25" height="600" style="fill: rgb(184,112,250);stroke: #fff;" />
+<text x="174" y="0" style="font-size:10px;padding:10px;" >physics</text>
+<rect x="174" y="0" width="25" height="22" style="fill: rgb(59,119,3);stroke: #fff;" />
+<text x="174" y="0" style="font-size:10px;padding:10px;" >DragForce</text>
+<rect x="174" y="22" width="25" height="27" style="fill: rgb(59,119,8);stroke: #fff;" />
+<text x="174" y="22" style="font-size:10px;padding:10px;" >GravityForce</text>
+<rect x="174" y="48" width="25" height="6" style="fill: rgb(59,119,244);stroke: #fff;" />
+<text x="174" y="48" style="font-size:10px;padding:10px;" >IForce</text>
+<rect x="174" y="55" width="25" height="210" style="fill: rgb(59,119,192);stroke: #fff;" />
+<text x="174" y="55" style="font-size:10px;padding:10px;" >NBodyForce</text>
+<rect x="174" y="265" width="25" height="57" style="fill: rgb(59,119,38);stroke: #fff;" />
+<text x="174" y="265" style="font-size:10px;padding:10px;" >Particle</text>
+<rect x="174" y="322" width="25" height="200" style="fill: rgb(59,119,182);stroke: #fff;" />
+<text x="174" y="322" style="font-size:10px;padding:10px;" >Simulation</text>
+<rect x="174" y="522" width="25" height="44" style="fill: rgb(59,119,26);stroke: #fff;" />
+<text x="174" y="522" style="font-size:10px;padding:10px;" >Spring</text>
+<rect x="174" y="566" width="25" height="34" style="fill: rgb(59,119,15);stroke: #fff;" />
+<text x="174" y="566" style="font-size:10px;padding:10px;" >SpringForce</text>
+<rect x="199" y="0" width="75" height="600" style="fill: rgb(184,112,44);stroke: #fff;" />
+<text x="199" y="0" style="font-size:10px;padding:10px;" >query</text>
+<rect x="199" y="0" width="75" height="11" style="fill: rgb(158,60,131);stroke: #fff;" />
+<text x="199" y="0" style="font-size:10px;padding:10px;" >AggregateExpression</text>
+<rect x="199" y="11" width="75" height="7" style="fill: rgb(158,60,127);stroke: #fff;" />
+<text x="199" y="11" style="font-size:10px;padding:10px;" >And</text>
+<rect x="199" y="18" width="75" height="26" style="fill: rgb(158,60,147);stroke: #fff;" />
+<text x="199" y="18" style="font-size:10px;padding:10px;" >Arithmetic</text>
+<rect x="199" y="44" width="75" height="6" style="fill: rgb(158,60,126);stroke: #fff;" />
+<text x="199" y="44" style="font-size:10px;padding:10px;" >Average</text>
+<rect x="199" y="50" width="75" height="19" style="fill: rgb(158,60,140);stroke: #fff;" />
+<text x="199" y="50" style="font-size:10px;padding:10px;" >BinaryExpression</text>
+<rect x="199" y="69" width="75" height="34" style="fill: rgb(158,60,155);stroke: #fff;" />
+<text x="199" y="69" style="font-size:10px;padding:10px;" >Comparison</text>
+<rect x="199" y="103" width="75" height="25" style="fill: rgb(158,60,145);stroke: #fff;" />
+<text x="199" y="103" style="font-size:10px;padding:10px;" >CompositeExpression</text>
+<rect x="199" y="128" width="75" height="5" style="fill: rgb(158,60,126);stroke: #fff;" />
+<text x="199" y="128" style="font-size:10px;padding:10px;" >Count</text>
+<rect x="199" y="133" width="75" height="28" style="fill: rgb(158,60,148);stroke: #fff;" />
+<text x="199" y="133" style="font-size:10px;padding:10px;" >DateUtil</text>
+<rect x="199" y="161" width="75" height="6" style="fill: rgb(158,60,127);stroke: #fff;" />
+<text x="199" y="161" style="font-size:10px;padding:10px;" >Distinct</text>
+<rect x="199" y="167" width="75" height="34" style="fill: rgb(158,60,155);stroke: #fff;" />
+<text x="199" y="167" style="font-size:10px;padding:10px;" >Expression</text>
+<rect x="199" y="201" width="75" height="24" style="fill: rgb(158,60,145);stroke: #fff;" />
+<text x="199" y="201" style="font-size:10px;padding:10px;" >ExpressionIterator</text>
+<rect x="199" y="225" width="75" height="22" style="fill: rgb(158,60,142);stroke: #fff;" />
+<text x="199" y="225" style="font-size:10px;padding:10px;" >Fn</text>
+<rect x="199" y="247" width="75" height="18" style="fill: rgb(158,60,139);stroke: #fff;" />
+<text x="199" y="247" style="font-size:10px;padding:10px;" >If</text>
+<rect x="199" y="265" width="75" height="14" style="fill: rgb(158,60,134);stroke: #fff;" />
+<text x="199" y="265" style="font-size:10px;padding:10px;" >IsA</text>
+<rect x="199" y="279" width="75" height="8" style="fill: rgb(158,60,129);stroke: #fff;" />
+<text x="199" y="279" style="font-size:10px;padding:10px;" >Literal</text>
+<rect x="199" y="287" width="75" height="25" style="fill: rgb(158,60,146);stroke: #fff;" />
+<text x="199" y="287" style="font-size:10px;padding:10px;" >Match</text>
+<rect x="199" y="312" width="75" height="6" style="fill: rgb(158,60,126);stroke: #fff;" />
+<text x="199" y="312" style="font-size:10px;padding:10px;" >Maximum</text>
+<rect x="199" y="318" width="75" height="96" style="fill: rgb(158,60,216);stroke: #fff;" />
+<text x="199" y="318" style="font-size:10px;padding:10px;" >methods</text>
+<rect x="199" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="199" y="318" style="font-size:10px;padding:10px;" >add</text>
+<rect x="202" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="202" y="318" style="font-size:10px;padding:10px;" >and</text>
+<rect x="204" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="204" y="318" style="font-size:10px;padding:10px;" >average</text>
+<rect x="205" y="318" width="1" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="205" y="318" style="font-size:10px;padding:10px;" >count</text>
+<rect x="207" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="207" y="318" style="font-size:10px;padding:10px;" >distinct</text>
+<rect x="208" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="208" y="318" style="font-size:10px;padding:10px;" >div</text>
+<rect x="211" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="211" y="318" style="font-size:10px;padding:10px;" >eq</text>
+<rect x="215" y="318" width="2" height="96" style="fill: rgb(253,251,248);stroke: #fff;" />
+<text x="215" y="318" style="font-size:10px;padding:10px;" >fn</text>
+<rect x="217" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="217" y="318" style="font-size:10px;padding:10px;" >gt</text>
+<rect x="220" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="220" y="318" style="font-size:10px;padding:10px;" >gte</text>
+<rect x="223" y="318" width="4" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="223" y="318" style="font-size:10px;padding:10px;" >iff</text>
+<rect x="227" y="318" width="2" height="96" style="fill: rgb(253,251,248);stroke: #fff;" />
+<text x="227" y="318" style="font-size:10px;padding:10px;" >isa</text>
+<rect x="230" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="230" y="318" style="font-size:10px;padding:10px;" >lt</text>
+<rect x="233" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="233" y="318" style="font-size:10px;padding:10px;" >lte</text>
+<rect x="236" y="318" width="1" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="236" y="318" style="font-size:10px;padding:10px;" >max</text>
+<rect x="238" y="318" width="1" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="238" y="318" style="font-size:10px;padding:10px;" >min</text>
+<rect x="239" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="239" y="318" style="font-size:10px;padding:10px;" >mod</text>
+<rect x="242" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="242" y="318" style="font-size:10px;padding:10px;" >mul</text>
+<rect x="245" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="245" y="318" style="font-size:10px;padding:10px;" >neq</text>
+<rect x="248" y="318" width="2" height="96" style="fill: rgb(253,251,248);stroke: #fff;" />
+<text x="248" y="318" style="font-size:10px;padding:10px;" >not</text>
+<rect x="250" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="250" y="318" style="font-size:10px;padding:10px;" >or</text>
+<rect x="252" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="252" y="318" style="font-size:10px;padding:10px;" >orderby</text>
+<rect x="254" y="318" width="4" height="96" style="fill: rgb(253,251,250);stroke: #fff;" />
+<text x="254" y="318" style="font-size:10px;padding:10px;" >range</text>
+<rect x="258" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="258" y="318" style="font-size:10px;padding:10px;" >select</text>
+<rect x="259" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="259" y="318" style="font-size:10px;padding:10px;" >stddev</text>
+<rect x="261" y="318" width="3" height="96" style="fill: rgb(253,251,249);stroke: #fff;" />
+<text x="261" y="318" style="font-size:10px;padding:10px;" >sub</text>
+<rect x="264" y="318" width="1" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="264" y="318" style="font-size:10px;padding:10px;" >sum</text>
+<rect x="266" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="266" y="318" style="font-size:10px;padding:10px;" >update</text>
+<rect x="267" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="267" y="318" style="font-size:10px;padding:10px;" >variance</text>
+<rect x="269" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="269" y="318" style="font-size:10px;padding:10px;" >where</text>
+<rect x="271" y="318" width="2" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="271" y="318" style="font-size:10px;padding:10px;" >xor</text>
+<rect x="273" y="318" width="1" height="96" style="fill: rgb(253,251,247);stroke: #fff;" />
+<text x="273" y="318" style="font-size:10px;padding:10px;" >_</text>
+<rect x="199" y="414" width="75" height="6" style="fill: rgb(158,60,126);stroke: #fff;" />
+<text x="199" y="414" style="font-size:10px;padding:10px;" >Minimum</text>
+<rect x="199" y="419" width="75" height="10" style="fill: rgb(158,60,131);stroke: #fff;" />
+<text x="199" y="419" style="font-size:10px;padding:10px;" >Not</text>
+<rect x="199" y="430" width="75" height="6" style="fill: rgb(158,60,127);stroke: #fff;" />
+<text x="199" y="430" style="font-size:10px;padding:10px;" >Or</text>
+<rect x="199" y="436" width="75" height="93" style="fill: rgb(158,60,213);stroke: #fff;" />
+<text x="199" y="436" style="font-size:10px;padding:10px;" >Query</text>
+<rect x="199" y="529" width="75" height="11" style="fill: rgb(158,60,131);stroke: #fff;" />
+<text x="199" y="529" style="font-size:10px;padding:10px;" >Range</text>
+<rect x="199" y="540" width="75" height="28" style="fill: rgb(158,60,148);stroke: #fff;" />
+<text x="199" y="540" style="font-size:10px;padding:10px;" >StringUtil</text>
+<rect x="199" y="567" width="75" height="5" style="fill: rgb(158,60,126);stroke: #fff;" />
+<text x="199" y="567" style="font-size:10px;padding:10px;" >Sum</text>
+<rect x="199" y="573" width="75" height="8" style="fill: rgb(158,60,128);stroke: #fff;" />
+<text x="199" y="573" style="font-size:10px;padding:10px;" >Variable</text>
+<rect x="199" y="580" width="75" height="13" style="fill: rgb(158,60,133);stroke: #fff;" />
+<text x="199" y="580" style="font-size:10px;padding:10px;" >Variance</text>
+<rect x="199" y="593" width="75" height="7" style="fill: rgb(158,60,128);stroke: #fff;" />
+<text x="199" y="593" style="font-size:10px;padding:10px;" >Xor</text>
+<rect x="274" y="0" width="26" height="600" style="fill: rgb(184,112,251);stroke: #fff;" />
+<text x="274" y="0" style="font-size:10px;padding:10px;" >scale</text>
+<rect x="274" y="0" width="26" height="40" style="fill: rgb(143,31,102);stroke: #fff;" />
+<text x="274" y="0" style="font-size:10px;padding:10px;" >IScaleMap</text>
+<rect x="274" y="40" width="26" height="25" style="fill: rgb(143,31,87);stroke: #fff;" />
+<text x="274" y="40" style="font-size:10px;padding:10px;" >LinearScale</text>
+<rect x="274" y="66" width="26" height="60" style="fill: rgb(143,31,122);stroke: #fff;" />
+<text x="274" y="66" style="font-size:10px;padding:10px;" >LogScale</text>
+<rect x="274" y="126" width="26" height="72" style="fill: rgb(143,31,134);stroke: #fff;" />
+<text x="274" y="126" style="font-size:10px;padding:10px;" >OrdinalScale</text>
+<rect x="274" y="198" width="26" height="47" style="fill: rgb(143,31,108);stroke: #fff;" />
+<text x="274" y="198" style="font-size:10px;padding:10px;" >QuantileScale</text>
+<rect x="274" y="245" width="26" height="93" style="fill: rgb(143,31,154);stroke: #fff;" />
+<text x="274" y="245" style="font-size:10px;padding:10px;" >QuantitativeScale</text>
+<rect x="274" y="338" width="26" height="34" style="fill: rgb(143,31,95);stroke: #fff;" />
+<text x="274" y="338" style="font-size:10px;padding:10px;" >RootScale</text>
+<rect x="274" y="371" width="26" height="82" style="fill: rgb(143,31,143);stroke: #fff;" />
+<text x="274" y="371" style="font-size:10px;padding:10px;" >Scale</text>
+<rect x="274" y="453" width="26" height="35" style="fill: rgb(143,31,96);stroke: #fff;" />
+<text x="274" y="453" style="font-size:10px;padding:10px;" >ScaleType</text>
+<rect x="274" y="488" width="26" height="112" style="fill: rgb(143,31,173);stroke: #fff;" />
+<text x="274" y="488" style="font-size:10px;padding:10px;" >TimeScale</text>
+<rect x="300" y="0" width="138" height="600" style="fill: rgb(184,112,107);stroke: #fff;" />
+<text x="300" y="0" style="font-size:10px;padding:10px;" >util</text>
+<rect x="300" y="0" width="138" height="30" style="fill: rgb(73,146,67);stroke: #fff;" />
+<text x="300" y="0" style="font-size:10px;padding:10px;" >Arrays</text>
+<rect x="300" y="30" width="138" height="36" style="fill: rgb(73,146,73);stroke: #fff;" />
+<text x="300" y="30" style="font-size:10px;padding:10px;" >Colors</text>
+<rect x="300" y="66" width="138" height="30" style="fill: rgb(73,146,66);stroke: #fff;" />
+<text x="300" y="66" style="font-size:10px;padding:10px;" >Dates</text>
+<rect x="300" y="96" width="138" height="46" style="fill: rgb(73,146,82);stroke: #fff;" />
+<text x="300" y="96" style="font-size:10px;padding:10px;" >Displays</text>
+<rect x="300" y="142" width="138" height="8" style="fill: rgb(73,146,45);stroke: #fff;" />
+<text x="300" y="142" style="font-size:10px;padding:10px;" >Filter</text>
+<rect x="300" y="150" width="138" height="40" style="fill: rgb(73,146,76);stroke: #fff;" />
+<text x="300" y="150" style="font-size:10px;padding:10px;" >Geometry</text>
+<rect x="300" y="190" width="138" height="38" style="fill: rgb(73,146,75);stroke: #fff;" />
+<text x="300" y="190" style="font-size:10px;padding:10px;" >heap</text>
+<rect x="300" y="190" width="122" height="38" style="fill: rgb(86,173,212);stroke: #fff;" />
+<text x="300" y="190" style="font-size:10px;padding:10px;" >FibonacciHeap</text>
+<rect x="422" y="190" width="16" height="38" style="fill: rgb(86,173,107);stroke: #fff;" />
+<text x="422" y="190" style="font-size:10px;padding:10px;" >HeapNode</text>
+<rect x="300" y="229" width="138" height="1" style="fill: rgb(73,146,38);stroke: #fff;" />
+<text x="300" y="229" style="font-size:10px;padding:10px;" >IEvaluable</text>
+<rect x="300" y="230" width="138" height="1" style="fill: rgb(73,146,38);stroke: #fff;" />
+<text x="300" y="230" style="font-size:10px;padding:10px;" >IPredicate</text>
+<rect x="300" y="231" width="138" height="3" style="fill: rgb(73,146,40);stroke: #fff;" />
+<text x="300" y="231" style="font-size:10px;padding:10px;" >IValueProxy</text>
+<rect x="300" y="234" width="138" height="34" style="fill: rgb(73,146,70);stroke: #fff;" />
+<text x="300" y="234" style="font-size:10px;padding:10px;" >math</text>
+<rect x="300" y="234" width="47" height="34" style="fill: rgb(32,65,176);stroke: #fff;" />
+<text x="300" y="234" style="font-size:10px;padding:10px;" >DenseMatrix</text>
+<rect x="347" y="234" width="42" height="34" style="fill: rgb(32,65,171);stroke: #fff;" />
+<text x="347" y="234" style="font-size:10px;padding:10px;" >IMatrix</text>
+<rect x="388" y="234" width="50" height="34" style="fill: rgb(32,65,179);stroke: #fff;" />
+<text x="388" y="234" style="font-size:10px;padding:10px;" >SparseMatrix</text>
+<rect x="300" y="268" width="138" height="64" style="fill: rgb(73,146,101);stroke: #fff;" />
+<text x="300" y="268" style="font-size:10px;padding:10px;" >Maths</text>
+<rect x="300" y="333" width="138" height="5" style="fill: rgb(73,146,42);stroke: #fff;" />
+<text x="300" y="333" style="font-size:10px;padding:10px;" >Orientation</text>
+<rect x="300" y="338" width="138" height="43" style="fill: rgb(73,146,80);stroke: #fff;" />
+<text x="300" y="338" style="font-size:10px;padding:10px;" >palette</text>
+<rect x="300" y="338" width="74" height="43" style="fill: rgb(170,85,243);stroke: #fff;" />
+<text x="300" y="338" style="font-size:10px;padding:10px;" >ColorPalette</text>
+<rect x="374" y="338" width="14" height="43" style="fill: rgb(170,85,184);stroke: #fff;" />
+<text x="374" y="338" style="font-size:10px;padding:10px;" >Palette</text>
+<rect x="388" y="338" width="24" height="43" style="fill: rgb(170,85,193);stroke: #fff;" />
+<text x="388" y="338" style="font-size:10px;padding:10px;" >ShapePalette</text>
+<rect x="412" y="338" width="26" height="43" style="fill: rgb(170,85,196);stroke: #fff;" />
+<text x="412" y="338" style="font-size:10px;padding:10px;" >SizePalette</text>
+<rect x="300" y="381" width="138" height="20" style="fill: rgb(73,146,57);stroke: #fff;" />
+<text x="300" y="381" style="font-size:10px;padding:10px;" >Property</text>
+<rect x="300" y="402" width="138" height="69" style="fill: rgb(73,146,106);stroke: #fff;" />
+<text x="300" y="402" style="font-size:10px;padding:10px;" >Shapes</text>
+<rect x="300" y="471" width="138" height="25" style="fill: rgb(73,146,62);stroke: #fff;" />
+<text x="300" y="471" style="font-size:10px;padding:10px;" >Sort</text>
+<rect x="300" y="496" width="138" height="24" style="fill: rgb(73,146,60);stroke: #fff;" />
+<text x="300" y="496" style="font-size:10px;padding:10px;" >Stats</text>
+<rect x="300" y="520" width="138" height="80" style="fill: rgb(73,146,117);stroke: #fff;" />
+<text x="300" y="520" style="font-size:10px;padding:10px;" >Strings</text>
+<rect x="438" y="0" width="362" height="600" style="fill: rgb(184,112,74);stroke: #fff;" />
+<text x="438" y="0" style="font-size:10px;padding:10px;" >vis</text>
+<rect x="438" y="0" width="362" height="47" style="fill: rgb(125,250,35);stroke: #fff;" />
+<text x="438" y="0" style="font-size:10px;padding:10px;" >axis</text>
+<rect x="438" y="0" width="14" height="47" style="fill: rgb(23,47,107);stroke: #fff;" />
+<text x="438" y="0" style="font-size:10px;padding:10px;" >Axes</text>
+<rect x="452" y="0" width="263" height="47" style="fill: rgb(23,47,100);stroke: #fff;" />
+<text x="452" y="0" style="font-size:10px;padding:10px;" >Axis</text>
+<rect x="715" y="0" width="7" height="47" style="fill: rgb(23,47,100);stroke: #fff;" />
+<text x="715" y="0" style="font-size:10px;padding:10px;" >AxisGridLine</text>
+<rect x="722" y="0" width="7" height="47" style="fill: rgb(23,47,100);stroke: #fff;" />
+<text x="722" y="0" style="font-size:10px;padding:10px;" >AxisLabel</text>
+<rect x="728" y="0" width="72" height="47" style="fill: rgb(23,47,165);stroke: #fff;" />
+<text x="728" y="0" style="font-size:10px;padding:10px;" >CartesianAxes</text>
+<rect x="438" y="47" width="362" height="62" style="fill: rgb(125,250,50);stroke: #fff;" />
+<text x="438" y="47" style="font-size:10px;padding:10px;" >controls</text>
+<rect x="438" y="47" width="17" height="62" style="fill: rgb(151,47,112);stroke: #fff;" />
+<text x="438" y="47" style="font-size:10px;padding:10px;" >AnchorControl</text>
+<rect x="455" y="47" width="31" height="62" style="fill: rgb(151,47,126);stroke: #fff;" />
+<text x="455" y="47" style="font-size:10px;padding:10px;" >ClickControl</text>
+<rect x="486" y="47" width="11" height="62" style="fill: rgb(151,47,105);stroke: #fff;" />
+<text x="486" y="47" style="font-size:10px;padding:10px;" >Control</text>
+<rect x="497" y="47" width="38" height="62" style="fill: rgb(151,47,132);stroke: #fff;" />
+<text x="497" y="47" style="font-size:10px;padding:10px;" >ControlList</text>
+<rect x="535" y="47" width="21" height="62" style="fill: rgb(151,47,116);stroke: #fff;" />
+<text x="535" y="47" style="font-size:10px;padding:10px;" >DragControl</text>
+<rect x="557" y="47" width="23" height="62" style="fill: rgb(151,47,117);stroke: #fff;" />
+<text x="557" y="47" style="font-size:10px;padding:10px;" >ExpandControl</text>
+<rect x="580" y="47" width="40" height="62" style="fill: rgb(151,47,134);stroke: #fff;" />
+<text x="580" y="47" style="font-size:10px;padding:10px;" >HoverControl</text>
+<rect x="619" y="47" width="6" height="62" style="fill: rgb(151,47,101);stroke: #fff;" />
+<text x="619" y="47" style="font-size:10px;padding:10px;" >IControl</text>
+<rect x="625" y="47" width="42" height="62" style="fill: rgb(151,47,137);stroke: #fff;" />
+<text x="625" y="47" style="font-size:10px;padding:10px;" >PanZoomControl</text>
+<rect x="668" y="47" width="64" height="62" style="fill: rgb(151,47,158);stroke: #fff;" />
+<text x="668" y="47" style="font-size:10px;padding:10px;" >SelectionControl</text>
+<rect x="732" y="47" width="68" height="62" style="fill: rgb(151,47,163);stroke: #fff;" />
+<text x="732" y="47" style="font-size:10px;padding:10px;" >TooltipControl</text>
+<rect x="438" y="109" width="362" height="153" style="fill: rgb(125,250,142);stroke: #fff;" />
+<text x="438" y="109" style="font-size:10px;padding:10px;" >data</text>
+<rect x="438" y="109" width="67" height="153" style="fill: rgb(253,251,58);stroke: #fff;" />
+<text x="438" y="109" style="font-size:10px;padding:10px;" >Data</text>
+<rect x="505" y="109" width="65" height="153" style="fill: rgb(253,251,55);stroke: #fff;" />
+<text x="505" y="109" style="font-size:10px;padding:10px;" >DataList</text>
+<rect x="570" y="109" width="34" height="153" style="fill: rgb(253,251,24);stroke: #fff;" />
+<text x="570" y="109" style="font-size:10px;padding:10px;" >DataSprite</text>
+<rect x="604" y="109" width="11" height="153" style="fill: rgb(253,251,1);stroke: #fff;" />
+<text x="604" y="109" style="font-size:10px;padding:10px;" >EdgeSprite</text>
+<rect x="615" y="109" width="63" height="153" style="fill: rgb(253,251,54);stroke: #fff;" />
+<text x="615" y="109" style="font-size:10px;padding:10px;" >NodeSprite</text>
+<rect x="678" y="109" width="29" height="153" style="fill: rgb(253,251,20);stroke: #fff;" />
+<text x="678" y="109" style="font-size:10px;padding:10px;" >render</text>
+<rect x="678" y="109" width="29" height="12" style="fill: rgb(168,81,175);stroke: #fff;" />
+<text x="678" y="109" style="font-size:10px;padding:10px;" >ArrowType</text>
+<rect x="678" y="121" width="29" height="96" style="fill: rgb(168,81,3);stroke: #fff;" />
+<text x="678" y="121" style="font-size:10px;padding:10px;" >EdgeRenderer</text>
+<rect x="678" y="217" width="29" height="6" style="fill: rgb(168,81,169);stroke: #fff;" />
+<text x="678" y="217" style="font-size:10px;padding:10px;" >IRenderer</text>
+<rect x="678" y="223" width="29" height="39" style="fill: rgb(168,81,201);stroke: #fff;" />
+<text x="678" y="223" style="font-size:10px;padding:10px;" >ShapeRenderer</text>
+<rect x="707" y="109" width="37" height="153" style="fill: rgb(253,251,27);stroke: #fff;" />
+<text x="707" y="109" style="font-size:10px;padding:10px;" >ScaleBinding</text>
+<rect x="744" y="109" width="23" height="153" style="fill: rgb(253,251,14);stroke: #fff;" />
+<text x="744" y="109" style="font-size:10px;padding:10px;" >Tree</text>
+<rect x="767" y="109" width="33" height="153" style="fill: rgb(253,251,23);stroke: #fff;" />
+<text x="767" y="109" style="font-size:10px;padding:10px;" >TreeBuilder</text>
+<rect x="438" y="262" width="362" height="10" style="fill: rgb(125,250,254);stroke: #fff;" />
+<text x="438" y="262" style="font-size:10px;padding:10px;" >events</text>
+<rect x="438" y="262" width="119" height="10" style="fill: rgb(216,177,218);stroke: #fff;" />
+<text x="438" y="262" style="font-size:10px;padding:10px;" >DataEvent</text>
+<rect x="557" y="262" width="97" height="10" style="fill: rgb(216,177,196);stroke: #fff;" />
+<text x="557" y="262" style="font-size:10px;padding:10px;" >SelectionEvent</text>
+<rect x="654" y="262" width="88" height="10" style="fill: rgb(216,177,186);stroke: #fff;" />
+<text x="654" y="262" style="font-size:10px;padding:10px;" >TooltipEvent</text>
+<rect x="742" y="262" width="58" height="10" style="fill: rgb(216,177,156);stroke: #fff;" />
+<text x="742" y="262" style="font-size:10px;padding:10px;" >VisualizationEvent</text>
+<rect x="438" y="272" width="362" height="50" style="fill: rgb(125,250,38);stroke: #fff;" />
+<text x="438" y="272" style="font-size:10px;padding:10px;" >legend</text>
+<rect x="438" y="272" width="210" height="50" style="fill: rgb(40,81,116);stroke: #fff;" />
+<text x="438" y="272" style="font-size:10px;padding:10px;" >Legend</text>
+<rect x="648" y="272" width="46" height="50" style="fill: rgb(40,81,209);stroke: #fff;" />
+<text x="648" y="272" style="font-size:10px;padding:10px;" >LegendItem</text>
+<rect x="694" y="272" width="106" height="50" style="fill: rgb(40,81,12);stroke: #fff;" />
+<text x="694" y="272" style="font-size:10px;padding:10px;" >LegendRange</text>
+<rect x="438" y="322" width="362" height="255" style="fill: rgb(125,250,244);stroke: #fff;" />
+<text x="438" y="322" style="font-size:10px;padding:10px;" >operator</text>
+<rect x="438" y="322" width="28" height="255" style="fill: rgb(167,79,186);stroke: #fff;" />
+<text x="438" y="322" style="font-size:10px;padding:10px;" >distortion</text>
+<rect x="438" y="322" width="28" height="80" style="fill: rgb(226,197,219);stroke: #fff;" />
+<text x="438" y="322" style="font-size:10px;padding:10px;" >BifocalDistortion</text>
+<rect x="438" y="402" width="28" height="113" style="fill: rgb(226,197,252);stroke: #fff;" />
+<text x="438" y="402" style="font-size:10px;padding:10px;" >Distortion</text>
+<rect x="438" y="515" width="28" height="62" style="fill: rgb(226,197,200);stroke: #fff;" />
+<text x="438" y="515" style="font-size:10px;padding:10px;" >FisheyeDistortion</text>
+<rect x="466" y="322" width="29" height="255" style="fill: rgb(167,79,188);stroke: #fff;" />
+<text x="466" y="322" style="font-size:10px;padding:10px;" >encoder</text>
+<rect x="466" y="322" width="29" height="54" style="fill: rgb(140,24,103);stroke: #fff;" />
+<text x="466" y="322" style="font-size:10px;padding:10px;" >ColorEncoder</text>
+<rect x="466" y="376" width="29" height="69" style="fill: rgb(140,24,118);stroke: #fff;" />
+<text x="466" y="376" style="font-size:10px;padding:10px;" >Encoder</text>
+<rect x="466" y="446" width="29" height="71" style="fill: rgb(140,24,119);stroke: #fff;" />
+<text x="466" y="446" style="font-size:10px;padding:10px;" >PropertyEncoder</text>
+<rect x="466" y="517" width="29" height="29" style="fill: rgb(140,24,77);stroke: #fff;" />
+<text x="466" y="517" style="font-size:10px;padding:10px;" >ShapeEncoder</text>
+<rect x="466" y="546" width="29" height="31" style="fill: rgb(140,24,80);stroke: #fff;" />
+<text x="466" y="546" style="font-size:10px;padding:10px;" >SizeEncoder</text>
+<rect x="495" y="322" width="23" height="255" style="fill: rgb(167,79,182);stroke: #fff;" />
+<text x="495" y="322" style="font-size:10px;padding:10px;" >filter</text>
+<rect x="495" y="322" width="23" height="112" style="fill: rgb(157,58,228);stroke: #fff;" />
+<text x="495" y="322" style="font-size:10px;padding:10px;" >FisheyeTreeFilter</text>
+<rect x="495" y="434" width="23" height="68" style="fill: rgb(157,58,184);stroke: #fff;" />
+<text x="495" y="434" style="font-size:10px;padding:10px;" >GraphDistanceFilter</text>
+<rect x="495" y="502" width="23" height="75" style="fill: rgb(157,58,192);stroke: #fff;" />
+<text x="495" y="502" style="font-size:10px;padding:10px;" >VisibilityFilter</text>
+<rect x="519" y="322" width="3" height="255" style="fill: rgb(167,79,161);stroke: #fff;" />
+<text x="519" y="322" style="font-size:10px;padding:10px;" >IOperator</text>
+<rect x="521" y="322" width="34" height="255" style="fill: rgb(167,79,192);stroke: #fff;" />
+<text x="521" y="322" style="font-size:10px;padding:10px;" >label</text>
+<rect x="521" y="322" width="34" height="149" style="fill: rgb(168,80,53);stroke: #fff;" />
+<text x="521" y="322" style="font-size:10px;padding:10px;" >Labeler</text>
+<rect x="521" y="471" width="34" height="58" style="fill: rgb(168,80,219);stroke: #fff;" />
+<text x="521" y="471" style="font-size:10px;padding:10px;" >RadialLabeler</text>
+<rect x="521" y="529" width="34" height="48" style="fill: rgb(168,80,208);stroke: #fff;" />
+<text x="521" y="529" style="font-size:10px;padding:10px;" >StackedAreaLabeler</text>
+<rect x="555" y="322" width="213" height="255" style="fill: rgb(167,79,115);stroke: #fff;" />
+<text x="555" y="322" style="font-size:10px;padding:10px;" >layout</text>
+<rect x="555" y="322" width="213" height="16" style="fill: rgb(140,25,66);stroke: #fff;" />
+<text x="555" y="322" style="font-size:10px;padding:10px;" >AxisLayout</text>
+<rect x="555" y="338" width="213" height="9" style="fill: rgb(140,25,59);stroke: #fff;" />
+<text x="555" y="338" style="font-size:10px;padding:10px;" >BundledEdgeRouter</text>
+<rect x="555" y="347" width="213" height="22" style="fill: rgb(140,25,72);stroke: #fff;" />
+<text x="555" y="347" style="font-size:10px;padding:10px;" >CircleLayout</text>
+<rect x="555" y="369" width="213" height="28" style="fill: rgb(140,25,79);stroke: #fff;" />
+<text x="555" y="369" style="font-size:10px;padding:10px;" >CirclePackingLayout</text>
+<rect x="555" y="397" width="213" height="11" style="fill: rgb(140,25,62);stroke: #fff;" />
+<text x="555" y="397" style="font-size:10px;padding:10px;" >DendrogramLayout</text>
+<rect x="555" y="408" width="213" height="20" style="fill: rgb(140,25,70);stroke: #fff;" />
+<text x="555" y="408" style="font-size:10px;padding:10px;" >ForceDirectedLayout</text>
+<rect x="555" y="428" width="213" height="11" style="fill: rgb(140,25,62);stroke: #fff;" />
+<text x="555" y="428" style="font-size:10px;padding:10px;" >IcicleTreeLayout</text>
+<rect x="555" y="440" width="213" height="7" style="fill: rgb(140,25,58);stroke: #fff;" />
+<text x="555" y="440" style="font-size:10px;padding:10px;" >IndentedTreeLayout</text>
+<rect x="555" y="447" width="213" height="19" style="fill: rgb(140,25,69);stroke: #fff;" />
+<text x="555" y="447" style="font-size:10px;padding:10px;" >Layout</text>
+<rect x="555" y="466" width="213" height="30" style="fill: rgb(140,25,81);stroke: #fff;" />
+<text x="555" y="466" style="font-size:10px;padding:10px;" >NodeLinkTreeLayout</text>
+<rect x="555" y="496" width="213" height="6" style="fill: rgb(140,25,57);stroke: #fff;" />
+<text x="555" y="496" style="font-size:10px;padding:10px;" >PieLayout</text>
+<rect x="555" y="503" width="213" height="29" style="fill: rgb(140,25,80);stroke: #fff;" />
+<text x="555" y="503" style="font-size:10px;padding:10px;" >RadialTreeLayout</text>
+<rect x="555" y="532" width="213" height="2" style="fill: rgb(140,25,53);stroke: #fff;" />
+<text x="555" y="532" style="font-size:10px;padding:10px;" >RandomLayout</text>
+<rect x="555" y="534" width="213" height="22" style="fill: rgb(140,25,72);stroke: #fff;" />
+<text x="555" y="534" style="font-size:10px;padding:10px;" >StackedAreaLayout</text>
+<rect x="555" y="555" width="213" height="22" style="fill: rgb(140,25,72);stroke: #fff;" />
+<text x="555" y="555" style="font-size:10px;padding:10px;" >TreeMapLayout</text>
+<rect x="767" y="322" width="5" height="255" style="fill: rgb(167,79,163);stroke: #fff;" />
+<text x="767" y="322" style="font-size:10px;padding:10px;" >Operator</text>
+<rect x="772" y="322" width="10" height="255" style="fill: rgb(167,79,169);stroke: #fff;" />
+<text x="772" y="322" style="font-size:10px;padding:10px;" >OperatorList</text>
+<rect x="783" y="322" width="8" height="255" style="fill: rgb(167,79,167);stroke: #fff;" />
+<text x="783" y="322" style="font-size:10px;padding:10px;" >OperatorSequence</text>
+<rect x="791" y="322" width="5" height="255" style="fill: rgb(167,79,164);stroke: #fff;" />
+<text x="791" y="322" style="font-size:10px;padding:10px;" >OperatorSwitch</text>
+<rect x="796" y="322" width="4" height="255" style="fill: rgb(167,79,162);stroke: #fff;" />
+<text x="796" y="322" style="font-size:10px;padding:10px;" >SortOperator</text>
+<rect x="438" y="577" width="362" height="23" style="fill: rgb(125,250,11);stroke: #fff;" />
+<text x="438" y="577" style="font-size:10px;padding:10px;" >Visualization</text>
 </svg>

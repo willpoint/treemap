@@ -87,7 +87,13 @@ func (t *TNode) drawNode(
 		bound.Min.Y,
 		bound.Dx(),
 		bound.Dy(),
-		"fill: "+t.color+";",
+		"fill: "+t.color+";stroke: #fff;",
+	)
+	svg.Text(
+		bound.Min.X,
+		bound.Min.Y,
+		t.Name,
+		"font-size:10px;padding:10px;",
 	)
 }
 
@@ -110,7 +116,7 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 		nextOrientation = VERTICAL
 	}
 	// create rectangular bound for each child
-	for i, c := range t.Children {
+	for _, c := range t.Children {
 		var proportion float64
 		var bound image.Rectangle
 		var color string
@@ -163,9 +169,9 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 			bound = image.Rectangle{min, max}
 		}
 		color = newRgb(
-			int(consumed+proportion)>>uint(i),
-			int(proportion)>>uint(i),
-			int(mSize+consumed),
+			int(mSize)>>uint(2),
+			int(mSize)>>uint(1),
+			int(mSize+proportion),
 		).String()
 		c.drawNode(
 			svg,
@@ -219,38 +225,26 @@ func (c rgb) String() string {
 func main() {
 
 	width, height := 800, 600 // pixels
-	svg := svg.New(os.Stdout)
-	b := []byte(`
-	{
-		"name": "first",
-		"children": [
-			{"name": "ffirst", "size": 4200},
-			{"name": "fsecond", "size": 1388},
-			{"name": "fthird", "children": [
-				{"name": "ftfirst", "size": 713},
-				{"name": "ftsecond", "children": [
-					{"name": "ftsfirst", "size": 328},
-					{"name": "ftssecond", "size": 713},
-					{"name": "ftsthird", "children": [
-						{"name": "ftstfirst", "size": 329},
-						{"name": "ftstsecond", "size": 131}
-					]}
-				]}
-			]}
-		]
+	out, err := os.OpenFile("index.svg", os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0666)
+	if err != nil {
+		log.Fatal("opening file", err)
 	}
-	`)
-
+	svg := svg.New(out)
 	svg.Start(width, height)
 	tmap := new(TNode)
 
-	err := json.Unmarshal(b, tmap)
+	f, err := os.Open("data.json")
+	if err != nil {
+		log.Fatal("opening file: ", err)
+	}
+	dec := json.NewDecoder(f)
+	err = dec.Decode(tmap)
 	if err != nil {
 		log.Fatal("marshal error:", err)
 	}
 	rect := image.Rect(0, 0, width, height)
 	tmap.bound = rect
-	tmap.orientation = HORIZONTAL
+	tmap.orientation = VERTICAL
 	tmap.drawTree(svg)
 	svg.End()
 
