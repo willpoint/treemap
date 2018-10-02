@@ -198,7 +198,8 @@ func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
 	}
 }
 
-// helper to run before and after func for each node in the tree
+// each runs the provided before and after functions
+// recursively for each node in the tree
 func each(nn []*TNode, before, after func(t *TNode)) {
 	for _, c := range nn {
 		if before != nil {
@@ -236,10 +237,11 @@ func itoa(n uint8) string {
 // the svg color notation for a node in the form
 // rgb(#, #, #) where # is the corresponding componenent value
 func (c rgb) String() string {
-	return "rgb(" + itoa(c.r) + "," +
-		itoa(c.g) + "," + itoa(c.b) + ")"
+	return "rgb(" +
+		itoa(c.r) + "," +
+		itoa(c.g) + "," +
+		itoa(c.b) + ")"
 }
-
 func main() {
 
 	// commandline arguments
