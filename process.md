@@ -104,7 +104,7 @@ if t.orientation == HORIZONTAL {
     // slicing would be along y-axis
     // x values may not be touched ?
     // proportion to consume is c.size / mSize
-    // `consumed` will tell the determine the offset
+    // `consumed` will determine the offset
     // to start new consumption
     // `proportion` tells the unit of width(x-axis)
     // or height(y-axis) to consume
