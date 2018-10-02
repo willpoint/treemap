@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"image"
 	"log"
 	"os"
@@ -208,10 +209,12 @@ func each(nn []*TNode, before, after func(t *TNode)) {
 	}
 }
 
+// rgb is the color model used for the treemap
 type rgb struct {
 	r, g, b uint8
 }
 
+// newRgb create a new color model
 func newRgb(r, g, b int) rgb {
 	return rgb{
 		r: uint8(r & 0xff),
@@ -220,36 +223,56 @@ func newRgb(r, g, b int) rgb {
 	}
 }
 
+// helper to convert rgb component value to string
 func itoa(n uint8) string {
 	return strconv.Itoa(int(n))
 }
 
+// rgb implements Stringer interface and returns
+// the svg color command for a node in the form
+// rgb(#, #, #) where # is the corresponding componenent value
 func (c rgb) String() string {
-	return "rgb(" + itoa(c.r) + "," + itoa(c.g) + "," + itoa(c.b) + ")"
+	return "rgb(" + itoa(c.r) + "," +
+		itoa(c.g) + "," + itoa(c.b) + ")"
 }
 
 func main() {
 
-	width, height := 800, 600 // dimension of canvas
+	// commandline arguments
+	width := flag.Int("w", 800, "width of rectange")
+	height := flag.Int("h", 600, "height of rectangle")
+	infile := flag.String("in", "", "filename to get data (json file)")
+	outfile := flag.String("out", "output.svg", "filename to save data (in svg)")
+	flag.Parse()
+
+	if *infile == "" {
+		flag.PrintDefaults()
+		os.Exit(1)
+	}
+
 	// output to save visualization
-	out, err := os.OpenFile("index.svg", os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0666)
+	out, err := os.OpenFile(*outfile, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Fatal("opening file", err)
 	}
 	svg := svg.New(out)
-	svg.Start(width, height)
+	svg.Start(*width, *height)
 	tmap := new(TNode)
 
 	// data to visualize
-	f, err := os.Open("data.json")
+	f, err := os.Open(*infile)
 	if err != nil {
 		log.Fatal("opening file: ", err)
 	}
+
 	dec := json.NewDecoder(f)
 	err = dec.Decode(tmap)
-	rect := image.Rect(0, 0, width, height)
-	tmap.bound = rect
+	rect := image.Rect(0, 0, *width, *height)
 	tmap.orientation = VERTICAL
+	tmap.bound = rect
+	if *width < *height {
+		tmap.orientation = HORIZONTAL
+	}
 	tmap.drawTree(svg)
 	svg.End()
 }
