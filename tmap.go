@@ -49,10 +49,19 @@ import (
 // partitioning of the display space allocated to the node
 // >
 //
+
+var svgText string
+
 const (
+	// HORIZONTAL CONSTANT
 	HORIZONTAL = "horizontal"
-	VERTICAL   = "vertical"
+	// VERTICAL CONSTANT
+	VERTICAL = "vertical"
 )
+
+// todo(uz)
+// create an interface type to describe elements that
+// can be drawn to form a treemap - eg. Size() string | Name() string
 
 // TNode is a treemap node
 type TNode struct {
@@ -66,8 +75,8 @@ type TNode struct {
 	bound       image.Rectangle
 }
 
-// drawNode uses information sent from parent
-// to correctly draw itself
+// drawNode uses information sent from
+// parent to correctly draw itself
 func (t *TNode) drawNode(
 	svg *svg.SVG,
 	bound image.Rectangle,
@@ -75,9 +84,6 @@ func (t *TNode) drawNode(
 	color string,
 	depth int,
 ) {
-	// TODO(uz)
-	// add heuristics for color property so each color is distinct
-	// show name of node as text in the center of the drawn rectangle
 	t.depth = depth
 	t.orientation = orientation
 	t.color = color
@@ -91,9 +97,9 @@ func (t *TNode) drawNode(
 	)
 	svg.Text(
 		bound.Min.X,
-		bound.Min.Y,
+		bound.Min.Y+10,
 		t.Name,
-		"font-size:10px;padding:10px;",
+		"font-size:10px;padding:30px;text-anchor: start;",
 	)
 }
 
@@ -224,7 +230,8 @@ func (c rgb) String() string {
 
 func main() {
 
-	width, height := 800, 600 // pixels
+	width, height := 800, 600 // dimension of canvas
+	// output to save visualization
 	out, err := os.OpenFile("index.svg", os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0666)
 	if err != nil {
 		log.Fatal("opening file", err)
@@ -233,30 +240,16 @@ func main() {
 	svg.Start(width, height)
 	tmap := new(TNode)
 
+	// data to visualize
 	f, err := os.Open("data.json")
 	if err != nil {
 		log.Fatal("opening file: ", err)
 	}
 	dec := json.NewDecoder(f)
 	err = dec.Decode(tmap)
-	if err != nil {
-		log.Fatal("marshal error:", err)
-	}
 	rect := image.Rect(0, 0, width, height)
 	tmap.bound = rect
 	tmap.orientation = VERTICAL
 	tmap.drawTree(svg)
 	svg.End()
-
 }
-
-/*
-
-// use this properties to write a test for verification
-// fmt.Println("consumed = ", consumed)
-// fmt.Println("proportion to consume = ", proportion)
-// fmt.Println("remainder = ", float64(t.bound.Dy())-proportion-consumed)
-// fmt.Println("total = ", proportion+consumed+(float64(t.bound.Dy())-proportion-consumed))
-// fmt.Println("===============")
-
-*/
