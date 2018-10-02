@@ -51,8 +51,6 @@ import (
 // >
 //
 
-var svgText string
-
 const (
 	// HORIZONTAL CONSTANT
 	HORIZONTAL = "horizontal"
@@ -112,7 +110,13 @@ func (t *TNode) size() float64 {
 	return sum
 }
 
-func (t *TNode) drawTree(svg *svg.SVG) {
+func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
+
+	// check that maxDepth is not reach
+	if maxDepth != 0 && t.depth >= maxDepth {
+		return
+	}
+
 	// consumed is the unit of width or height consumed
 	var consumed float64
 	mSize := t.size()
@@ -190,7 +194,7 @@ func (t *TNode) drawTree(svg *svg.SVG) {
 		// update consumed for the next iteration
 		// then send child to draw itself
 		consumed += proportion
-		c.drawTree(svg)
+		c.drawTree(svg, maxDepth)
 	}
 }
 
@@ -223,13 +227,13 @@ func newRgb(r, g, b int) rgb {
 	}
 }
 
-// helper to convert rgb component value to string
+// itoa helps convert an rgb component value to string
 func itoa(n uint8) string {
 	return strconv.Itoa(int(n))
 }
 
 // rgb implements Stringer interface and returns
-// the svg color command for a node in the form
+// the svg color notation for a node in the form
 // rgb(#, #, #) where # is the corresponding componenent value
 func (c rgb) String() string {
 	return "rgb(" + itoa(c.r) + "," +
@@ -243,6 +247,7 @@ func main() {
 	height := flag.Int("h", 600, "height of rectangle")
 	infile := flag.String("in", "", "filename to get data (json file)")
 	outfile := flag.String("out", "output.svg", "filename to save data (in svg)")
+	maxDepth := flag.Int("depth", 0, "max depth to draw the treemap")
 	flag.Parse()
 
 	if *infile == "" {
@@ -273,6 +278,6 @@ func main() {
 	if *width < *height {
 		tmap.orientation = HORIZONTAL
 	}
-	tmap.drawTree(svg)
+	tmap.drawTree(svg, *maxDepth)
 	svg.End()
 }
