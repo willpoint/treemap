@@ -61,9 +61,11 @@ const (
 	VERTICAL = "vertical"
 )
 
+type orientation string
+
 const (
-	horizontal string = "horizontal"
-	vertical          = "vertical"
+	horizontal orientation = "horizontal"
+	vertical               = "vertical"
 )
 
 // todo(uz)
@@ -76,8 +78,8 @@ type TNode struct {
 	Size     float64  `json:"size,omitempty"`
 	Children []*TNode `json:"children,omitempty"`
 
+	orientation orientation
 	color       string
-	orientation string
 	depth       int
 	bound       image.Rectangle
 }
@@ -87,12 +89,12 @@ type TNode struct {
 func (t *TNode) drawNode(
 	svg *svg.SVG,
 	bound image.Rectangle,
-	orientation string,
+	orient orientation,
 	color string,
 	depth int,
 ) {
 	t.depth = depth
-	t.orientation = orientation
+	t.orientation = orient
 	t.color = color
 	t.bound = bound
 	svg.Rect(
@@ -128,11 +130,11 @@ func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
 	// consumed is the unit of width or height consumed
 	var consumed float64
 	mSize := t.size()
-	var nextOrientation string
+	var nextPath orientation
 	if t.orientation == vertical {
-		nextOrientation = HORIZONTAL
+		nextPath = horizontal
 	} else {
-		nextOrientation = vertical
+		nextPath = vertical
 	}
 	// create rectangular bound for each child
 	for _, c := range t.Children {
@@ -195,7 +197,7 @@ func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
 		c.drawNode(
 			svg,
 			bound,
-			nextOrientation,
+			nextPath,
 			color,
 			t.depth+1,
 		)
