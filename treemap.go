@@ -4,9 +4,9 @@ structures efficiently in 2-D display surface. treemap works with
 types that are defined recursively and have weight/size defined
 for each node. If a node implements the TreeMaper interface
     type TreeMaper interface {
-        Name() string
+        Identity() string
         Weight() float64
-        Children() []TreeMaper
+        Descendant() []TreeMaper
     }
 then it can be drawn
 This weight may represent a single domain property
@@ -44,107 +44,59 @@ https://www.cs.umd.edu/~ben/papers/Johnson1991Tree.pdf
 package treemap
 
 import (
-	"encoding/json"
-	"flag"
+	"fmt"
 	"image"
-	"log"
-	"os"
-	"strconv"
+	"io"
 
 	svg "github.com/ajstarks/svgo"
 )
 
-const (
-	// HORIZONTAL CONSTANT
-	HORIZONTAL = "horizontal"
-	// VERTICAL CONSTANT
-	VERTICAL = "vertical"
-)
-
-type orientation string
+// Orientation is the diretion to start a slice
+type Orientation string
 
 const (
-	horizontal orientation = "horizontal"
-	vertical               = "vertical"
+	// Horizontal describes a line along the x-axis
+	Horizontal Orientation = "horizontal"
+
+	// Vertical describes a line along the y-axis
+	Vertical = "vertical"
 )
 
-// todo(uz)
-// create an interface type to describe elements that
-// can be drawn to form a treemap - eg. Size() string | Name() string
-
-// TNode is a treemap node
-type TNode struct {
-	Name     string   `json:"name"`
-	Size     float64  `json:"size,omitempty"`
-	Children []*TNode `json:"children,omitempty"`
-
-	orientation orientation
-	color       string
-	depth       int
-	bound       image.Rectangle
+// TreeMapper interface represents a hierarchical
+// data structure that can be drawn to form a treemap
+type TreeMapper interface {
+	Identity() string
+	Weight() float64
+	Descendants() []TreeMapper
 }
 
-// drawNode uses information sent from
-// parent to correctly draw itself
-func (t *TNode) drawNode(
+func drawTree(
+	t TreeMapper,
 	svg *svg.SVG,
+	path Orientation,
 	bound image.Rectangle,
-	orient orientation,
-	color string,
-	depth int,
+	depth, maxDepth int,
 ) {
-	t.depth = depth
-	t.orientation = orient
-	t.color = color
-	t.bound = bound
-	svg.Rect(
-		bound.Min.X,
-		bound.Min.Y,
-		bound.Dx(),
-		bound.Dy(),
-		"fill: "+t.color+";stroke: #fff;",
-	)
-	svg.Text(
-		bound.Min.X,
-		bound.Min.Y+10,
-		t.Name,
-		"font-size:10px;padding:30px;text-anchor: start;",
-	)
-}
-
-func (t *TNode) size() float64 {
-	var sum float64
-	each([]*TNode{t}, func(n *TNode) {
-		sum += n.Size
-	}, nil)
-	return sum
-}
-
-func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
-
 	// check that maxDepth is not reach
-	if maxDepth != 0 && t.depth >= maxDepth {
+	if maxDepth != 0 && depth >= maxDepth {
 		return
 	}
-
 	// consumed is the unit of width or height consumed
 	var consumed float64
-	mSize := t.size()
-	var nextPath orientation
-	if t.orientation == vertical {
-		nextPath = horizontal
-	} else {
-		nextPath = vertical
+	parentWeight := t.Weight()
+	nextPath := Horizontal
+	if path == Horizontal {
+		nextPath = Vertical
 	}
-	// create rectangular bound for each child
-	for _, c := range t.Children {
+
+	for _, c := range t.Descendants() {
 		var proportion float64
-		var bound image.Rectangle
+		var newBound image.Rectangle
 		var color string
-		if t.orientation == horizontal {
+		if path == Horizontal {
 			// slicing would be along y-axis
 			// x values may not be touched ?
-			// proportion to consume is c.size / mSize
+			// proportion to consume is c.Weight() / parentWeight
 			// `consumed` will tell the determine the offset
 			// to start new consumption
 			// `proportion` tells the unit of width or height to
@@ -166,62 +118,70 @@ func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
 			// x1 -> parentX1
 			// y0 -> parentY0 + consumed
 			// y1 -> parentY0 + consumed + proportion
-			proportion = (c.size() / mSize) * float64(t.bound.Dy())
-			x0 := t.bound.Min.X
-			x1 := t.bound.Max.X
-			y0 := t.bound.Min.Y + int(consumed+0.5)
-			y1 := t.bound.Min.Y + int(consumed+0.5) + int(proportion+0.5)
+			proportion = (c.Weight() / parentWeight) * float64(bound.Dy())
+			x0 := bound.Min.X
+			x1 := bound.Max.X
+			y0 := bound.Min.Y + int(consumed+0.5)
+			y1 := bound.Min.Y + int(consumed+0.5) + int(proportion+0.5)
 			min := image.Point{x0, y0}
 			max := image.Point{x1, y1}
-			bound = image.Rectangle{min, max}
+			newBound = image.Rectangle{min, max}
 		} else {
 			// slicing would be along the y-axis
 			// x0 -> parentX0 + consumed
 			// x1 -> parentX0 + consumed + proportion
 			// y0 -> parentY0
 			// y1 -> parentY1
-			proportion = (c.size() / mSize) * float64(t.bound.Dx())
-			x0 := t.bound.Min.X + int(consumed+0.5)
-			x1 := t.bound.Min.X + int(consumed+0.5) + int(proportion+0.5)
-			y0 := t.bound.Min.Y
-			y1 := t.bound.Max.Y
+			proportion = (c.Weight() / parentWeight) * float64(bound.Dx())
+			x0 := bound.Min.X + int(consumed+0.5)
+			x1 := bound.Min.X + int(consumed+0.5) + int(proportion+0.5)
+			y0 := bound.Min.Y
+			y1 := bound.Max.Y
 			min := image.Point{x0, y0}
 			max := image.Point{x1, y1}
-			bound = image.Rectangle{min, max}
+			newBound = image.Rectangle{min, max}
 		}
 		color = newRgb(
-			int(mSize)>>uint(2),
-			int(mSize)>>uint(1),
-			int(mSize+proportion),
+			int(parentWeight)>>uint(2),
+			int(parentWeight)>>uint(1),
+			int(parentWeight+proportion),
 		).String()
-		c.drawNode(
+
+		drawNode(
 			svg,
-			bound,
-			nextPath,
+			c.Identity(),
+			newBound,
 			color,
-			t.depth+1,
 		)
+
 		// update consumed for the next iteration
 		// then send child to draw itself
 		consumed += proportion
-		c.drawTree(svg, maxDepth)
+		drawTree(c, svg, nextPath, newBound, depth+1, maxDepth)
 	}
 }
 
-// each runs the provided before and after functions
-// recursively for each node in the tree
-func each(nn []*TNode, before, after func(t *TNode)) {
-	for _, c := range nn {
-		if before != nil {
-			before(c)
-		}
-		if c.Children != nil {
-			each(c.Children, before, after)
-		}
-		if after != nil {
-			after(c)
-		}
-	}
+// drawNode draws a treemap node using the bound,
+// color, an identity passed in to create an svg element
+func drawNode(
+	svg *svg.SVG,
+	identity string,
+	bound image.Rectangle,
+	color string,
+) {
+	svg.Rect(
+		bound.Min.X,
+		bound.Min.Y,
+		bound.Dx(),
+		bound.Dy(),
+		"fill: "+color+";stroke: #fff;",
+	)
+	svg.Text(
+		bound.Min.X,
+		bound.Min.Y+10,
+		identity,
+		"font-size:10px;padding:30px;text-anchor: start;",
+	)
 }
 
 // rgb is the color model used for the treemap
@@ -238,58 +198,27 @@ func newRgb(r, g, b int) rgb {
 	}
 }
 
-// itoa helps convert an rgb component value to string
-func itoa(n uint8) string {
-	return strconv.Itoa(int(n))
-}
-
 // rgb implements Stringer interface and returns
 // the svg color notation for a node in the form
 // rgb(#, #, #) where # is the corresponding componenent value
 func (c rgb) String() string {
-	return "rgb(" +
-		itoa(c.r) + "," +
-		itoa(c.g) + "," +
-		itoa(c.b) + ")"
+	return fmt.Sprintf("rgb(%d, %d, %d)", c.r, c.g, c.b)
 }
-func main() {
 
-	// commandline arguments
-	width := flag.Int("w", 800, "width of rectange")
-	height := flag.Int("h", 600, "height of rectangle")
-	infile := flag.String("in", "", "filename to get data (json file)")
-	outfile := flag.String("out", "output.svg", "filename to save data (in svg)")
-	maxDepth := flag.Int("depth", 0, "max depth to draw the treemap")
-	flag.Parse()
-
-	if *infile == "" {
-		flag.PrintDefaults()
-		os.Exit(1)
-	}
-
-	// output to save visualization
-	out, err := os.OpenFile(*outfile, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0666)
-	if err != nil {
-		log.Fatal("opening file", err)
-	}
-	svg := svg.New(out)
-	svg.Start(*width, *height)
-	tmap := new(TNode)
-
-	// data to visualize
-	f, err := os.Open(*infile)
-	if err != nil {
-		log.Fatal("opening file: ", err)
-	}
-
-	dec := json.NewDecoder(f)
-	err = dec.Decode(tmap)
-	rect := image.Rect(0, 0, *width, *height)
-	tmap.orientation = vertical
-	tmap.bound = rect
-	if *width < *height {
-		tmap.orientation = horizontal
-	}
-	tmap.drawTree(svg, *maxDepth)
+// DrawTreemap draws the tree-map described by treemaper
+// and writes the resulting tree-map to the io.Writer
+// at a depth less than or equal to the maxDepth
+// from the given start orientation
+func DrawTreemap(
+	tm TreeMapper,
+	width, height int,
+	w io.Writer,
+	startPath Orientation,
+	maxDepth int,
+) {
+	svg := svg.New(w)
+	svg.Start(width, height)
+	bound := image.Rect(0, 0, width, height)
+	drawTree(tm, svg, startPath, bound, 0, maxDepth)
 	svg.End()
 }
