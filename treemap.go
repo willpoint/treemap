@@ -1,3 +1,46 @@
+/*
+Package treemap presents a way to visualize hierarchical information
+structures efficiently in 2-D display surface. treemap works with
+types that are defined recursively and have weight/size defined
+for each node. If a node implements the TreeMaper interface
+    type TreeMaper interface {
+        Name() string
+        Weight() float64
+        Children() []TreeMaper
+    }
+then it can be drawn
+This weight may represent a single domain property
+(such as disk usage or file age for directory tree)
+A node's weight will determine its display size and only the
+space represented by leaf nodes are shown.
+
+Properties:
+
+If node i is an ancestor of node j, then the bounding box of node i
+completely encloses or is equal to the bounding box of node j.
+
+The bounding boxes of two nodes intersect iff one node is an
+ancestor of the other
+
+Nodes occupy a display area proportional to their weight.
+
+The weight of a node is greater than or equal to the sum of its
+children.
+
+Algorithm:
+
+The procedure tracks the cursor movement in the tree
+
+1. The root node draws itself within its rectangular bounds
+2. Checks that maximum depth to draw is not reached.
+2. Sets new bounds and drawing properties for each of its children,
+inverting the orientation for the next drawing phase.
+3. Each of its children do steps 1, 2 and 3 recursivley till
+the complete tree is mapped.
+
+See the paper published by the original authors for details
+https://www.cs.umd.edu/~ben/papers/Johnson1991Tree.pdf
+*/
 package treemap
 
 import (
@@ -11,52 +54,16 @@ import (
 	svg "github.com/ajstarks/svgo"
 )
 
-// A TreeMap presents hierarchical information structures
-// efficiently in 2-D display surface.
-// TM requires that a weight be assigned to each node
-// this weight may represent a single domain property
-// (such as disk usage or file age for a directory tree)
-// To simplify this implementation size is used to describe
-// this weight.
-// A node's weight (bounding box) will determine its display
-// size and can be thought of as a measure of importance
-// or degree of interest.
-//
-// The following are properties of a treemap
-//
-// > If node i is an ancestor of node j, then the bounding box
-// of node i completely encloses or is equal to the bounding box
-// of j
-// > the bouding boxes of two nodes intersect iff one node
-// is an ancestor of the other
-// > nodes occupy a display area proportional to their weight.
-// > The weight of a node is greater than or equal to the sum
-// > of the weight of its children
-//
-// Displaying visualization
-// Once the bounding box of a node is set, a variety of display
-// props determine how the node is drawn within it.
-// > color (hue, saturation, brightness)
-// > texture, shape, border, blinking, etc...
-//
-// Algorithm
-// The procedure will draw a Tree-Map and track the cursor
-// movement in the tree.
-//
-// 1. The node draws itself within it's rectangular bounds
-// according to its display property (weight, color, border)
-// 2. The node sets new bounds and drawing properties for each of
-// its children, and recursively sends each child a drawing command
-// The bounds of a node's children form either a vertical or horizontal
-// partitioning of the display space allocated to the node
-//
-//
-
 const (
 	// HORIZONTAL CONSTANT
 	HORIZONTAL = "horizontal"
 	// VERTICAL CONSTANT
 	VERTICAL = "vertical"
+)
+
+const (
+	horizontal string = "horizontal"
+	vertical          = "vertical"
 )
 
 // todo(uz)
@@ -122,17 +129,17 @@ func (t *TNode) drawTree(svg *svg.SVG, maxDepth int) {
 	var consumed float64
 	mSize := t.size()
 	var nextOrientation string
-	if t.orientation == VERTICAL {
+	if t.orientation == vertical {
 		nextOrientation = HORIZONTAL
 	} else {
-		nextOrientation = VERTICAL
+		nextOrientation = vertical
 	}
 	// create rectangular bound for each child
 	for _, c := range t.Children {
 		var proportion float64
 		var bound image.Rectangle
 		var color string
-		if t.orientation == HORIZONTAL {
+		if t.orientation == horizontal {
 			// slicing would be along y-axis
 			// x values may not be touched ?
 			// proportion to consume is c.size / mSize
@@ -276,10 +283,10 @@ func main() {
 	dec := json.NewDecoder(f)
 	err = dec.Decode(tmap)
 	rect := image.Rect(0, 0, *width, *height)
-	tmap.orientation = VERTICAL
+	tmap.orientation = vertical
 	tmap.bound = rect
 	if *width < *height {
-		tmap.orientation = HORIZONTAL
+		tmap.orientation = horizontal
 	}
 	tmap.drawTree(svg, *maxDepth)
 	svg.End()
