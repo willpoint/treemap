@@ -1,4 +1,4 @@
-package main
+package treemap
 
 import (
 	"encoding/json"
@@ -21,6 +21,7 @@ import (
 // A node's weight (bounding box) will determine its display
 // size and can be thought of as a measure of importance
 // or degree of interest.
+//
 // The following are properties of a treemap
 //
 // > If node i is an ancestor of node j, then the bounding box
@@ -32,7 +33,7 @@ import (
 // > The weight of a node is greater than or equal to the sum
 // > of the weight of its children
 //
-//  Displaying visualization
+// Displaying visualization
 // Once the bounding box of a node is set, a variety of display
 // props determine how the node is drawn within it.
 // > color (hue, saturation, brightness)
@@ -41,14 +42,14 @@ import (
 // Algorithm
 // The procedure will draw a Tree-Map and track the cursor
 // movement in the tree.
-// >
+//
 // 1. The node draws itself within it's rectangular bounds
 // according to its display property (weight, color, border)
 // 2. The node sets new bounds and drawing properties for each of
 // its children, and recursively sends each child a drawing command
 // The bounds of a node's children form either a vertical or horizontal
 // partitioning of the display space allocated to the node
-// >
+//
 //
 
 const (
