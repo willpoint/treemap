@@ -6,7 +6,7 @@ for each node. If a node implements the TreeMaper interface
     type TreeMaper interface {
         Identity() string
         Weight() float64
-        Descendant() []TreeMaper
+        Descendants() []TreeMaper
     }
 then it can be drawn
 This weight may represent a single domain property
@@ -210,9 +210,9 @@ func (c rgb) String() string {
 // at a depth less than or equal to the maxDepth
 // from the given start orientation
 func DrawTreemap(
+	w io.Writer,
 	tm TreeMapper,
 	width, height int,
-	w io.Writer,
 	startPath Orientation,
 	maxDepth int,
 ) {

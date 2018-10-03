@@ -78,13 +78,13 @@ func main() {
 	}
 
 	dec := json.NewDecoder(f)
-	err = dec.Decode(&tmap)
+	err = dec.Decode(tmap)
 
 	var orientation treemap.Orientation
 	orientation = treemap.Vertical
 	if *width < *height {
 		orientation = treemap.Horizontal
 	}
-	treemap.DrawTreemap(tmap, *width, *height, out, orientation, *maxDepth)
+	treemap.DrawTreemap(out, tmap, *width, *height, orientation, *maxDepth)
 
 }
