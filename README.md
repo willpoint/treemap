@@ -1,4 +1,4 @@
-<a href="https://godoc.org/github.com/willpoint/treemap"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"></a>
+<a href="https://godoc.org/github.com/willpoint/treemap"><img src="https://img.shields.io/badge/godoc-reference-green.svg"></a>
 
 ## Tree-Map
 
