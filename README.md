@@ -1,4 +1,6 @@
-# Tree-Map
+<a href="https://godoc.org/github.com/willpoint/treemap"><img src="https://img.shields.io/badge/godoc-reference-blue.svg"></a>
+
+## Tree-Map
 
 An implementation of Tree-Map in Go for visualizing hierarchical data.
 
