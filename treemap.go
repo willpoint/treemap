@@ -96,12 +96,10 @@ func drawTree(
 		if path == Horizontal {
 			// slicing would be along y-axis
 			// x values may not be touched ?
-			// proportion to consume is c.Weight() / parentWeight
-			// `consumed` will tell the determine the offset
-			// to start new consumption
-			// `proportion` tells the unit of width or height to
-			// consume
-			// bound is (x0, y0)-(x1, y1)
+			// `proportion` to consume is c.Weight() / parentWeight
+			// `consumed` will  determine the offset to start new consumption
+			// `proportion` tells the unit of width or height to consume
+			// `bound` is (x0, y0) - (x1, y1)
 			//
 			// (x0, y0)				(x1, y0)
 			//    +--------------------+
